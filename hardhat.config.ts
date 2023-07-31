@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 // https://github.com/projectsophon/hardhat-circom
@@ -21,6 +22,12 @@ const config: HardhatUserConfig = {
         version: "0.6.11",
       }
     ]
+  },
+  networks: {
+    mumbai: {
+      url: "https://polygon-testnet.public.blastapi.io",
+      accounts: [process.env.WALLET_PRIVATE_KEY]
+    },
   },
   circom: {
     // (optional) Base path for input files, defaults to `./circuits/`
